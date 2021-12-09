@@ -8,6 +8,8 @@ Decorate your `Flipper` features with a link to their admin page
 - Adds a hover tooltip with a link to the key admin page
   - link is in the form `"${baseUrl}${key}"` where key in the above example is `some_flipper_key`
 
+![Example 1](example.png)
+
 ## Extension Settings
 
 This extension contributes the following settings:
