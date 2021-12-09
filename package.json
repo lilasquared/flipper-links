@@ -8,6 +8,7 @@
   },
   "version": "1.0.0",
   "icon": "icon.png",
+  "publisher": "lilasquared",
   "engines": {
     "vscode": "^1.63.0"
   },

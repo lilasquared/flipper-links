@@ -1,12 +1,16 @@
+![marketplace](https://vsmarketplacebadge.apphb.com/version/lilasquared.flipper-links.svg)
+![installs](https://vsmarketplacebadge.apphb.com/installs/lilasquared.flipper-links.svg)
+![rating](https://vsmarketplacebadge.apphb.com/rating-star/lilasquared.flipper-links.svg)
+
 # flipper-follower README
 
 Decorate your `Flipper` features with a link to their admin page
 
 ## Features
 
-- Decorates `Flipper["some_flipper_key"]` with an underline
+- Decorates `Flipper["my_feature"]` with an underline
 - Adds a hover tooltip with a link to the key admin page
-  - link is in the form `"${baseUrl}${key}"` where key in the above example is `some_flipper_key`
+  - link is in the form `"${baseUrl}${key}"` where key in the above example is `my_feature`
 
 ![Example 1](example.png)
 
@@ -21,8 +25,6 @@ This extension contributes the following settings:
 Currently only one `baseUrl` is supported
 
 ## Release Notes
-
-Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
