@@ -2,6 +2,7 @@
   "name": "flipper-links",
   "displayName": "Flipper Links",
   "description": "Link flipper features to their respective admin page",
+  "repository": "https://github.com/lilasquared/flipper-links",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.63.0"
