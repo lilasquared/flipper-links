@@ -11,7 +11,6 @@ export function activate(context: vscode.ExtensionContext) {
 
   let timeout: NodeJS.Timer | undefined = undefined;
 
-  const baseUrl = vscode.workspace.getConfiguration("flipper-follower").get("baseUrl");
   const flipperDecorationType = vscode.window.createTextEditorDecorationType({
     textDecoration: "underline",
   });
@@ -23,6 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
 
+    const baseUrl = vscode.workspace.getConfiguration("flipper-follower").get("baseUrl");
     const regex = /Flipper\[["'](?<key>.+)["']\]/g;
     const text = activeEditor.document.getText();
     const matches: vscode.DecorationOptions[] = [];
