@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
 
-    const baseUrl = vscode.workspace.getConfiguration("flipper-follower").get("baseUrl");
+    const baseUrl = vscode.workspace.getConfiguration("flipper-links").get("baseUrl");
     const regex = /Flipper\[["'](?<key>.+)["']\]/g;
     const text = activeEditor.document.getText();
     const matches: vscode.DecorationOptions[] = [];
