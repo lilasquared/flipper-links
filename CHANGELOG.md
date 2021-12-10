@@ -1,9 +1,14 @@
 # Change Log
 
-All notable changes to the "flipper-follower" extension will be documented in this file.
+All notable changes to the "flipper-link" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [1.0.0] - 2021-12-09
 
-## [Unreleased]
+- Initial Release
 
-- Initial release
+## [1.1.0] - 2021-12-10
+
+### Added
+
+- support for symbol keys
+- support for multiple environments

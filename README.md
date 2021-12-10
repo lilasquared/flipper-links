@@ -15,9 +15,20 @@ Decorate your `Flipper` features with a link to their admin page
 
 Example using `flipper-links.baseUrl`
 
+```json
+"flipper-links.baseUrl": "https://admin.acme.org/admin/flipper/features/",
+```
+
 ![base_url_example](base_url_example.png)
 
 Example using `flipper-links.environments`
+
+```json
+"flipper-links.environments": {
+    "qa": "https://admin-qa.acme.org/admin/flipper/features/",
+    "prod": "https://admin.acme.org/admin/flipper/features/"
+}
+```
 
 ![environments_example](environments_example.png)
 
