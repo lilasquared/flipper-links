@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/lilasquared/flipper-links"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "icon": "icon.png",
   "publisher": "lilasquared",
   "engines": {
@@ -27,6 +27,11 @@
           "type": "string",
           "default": "",
           "description": "Base url at which to find your flipper features"
+        },
+        "flipper-links.environments": {
+          "type": "object",
+          "default": {},
+          "description": "Specify multiple environments with key of env name and value as baseUrl"
         }
       }
     }

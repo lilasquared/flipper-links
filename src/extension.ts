@@ -1,6 +1,23 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
+import { env } from "process";
 import * as vscode from "vscode";
+
+type Environments = {
+  [index: string]: string;
+};
+
+type Config = {
+  baseUrl: String | undefined;
+  environments: Environments;
+};
+
+function getConfig(): Config {
+  return {
+    baseUrl: vscode.workspace.getConfiguration("flipper-links").get<String>("baseUrl") || "",
+    environments: vscode.workspace.getConfiguration("flipper-links").get<Environments>("environments") || {},
+  };
+}
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -22,22 +39,43 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
 
-    const baseUrl = vscode.workspace.getConfiguration("flipper-links").get("baseUrl");
-    const regex = /Flipper\[["'](?<key>.+)["']\]/g;
+    const config = getConfig();
+    const regex = /Flipper\[["':](?<feature>.+?)["']?\]/g;
     const text = activeEditor.document.getText();
     const matches: vscode.DecorationOptions[] = [];
     let match;
     while ((match = regex.exec(text))) {
       const startPos = activeEditor.document.positionAt(match.index);
       const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+
       const decoration: vscode.DecorationOptions = {
         range: new vscode.Range(startPos, endPos),
-        hoverMessage: `${baseUrl}${match.groups?.key}`,
+        hoverMessage: getHoverMessage(match, config),
       };
       matches.push(decoration);
     }
-    console.log(matches);
     activeEditor.setDecorations(flipperDecorationType, matches);
+  }
+
+  function getHoverMessage(
+    match: RegExpExecArray,
+    config: Config
+  ): vscode.MarkdownString | Array<vscode.MarkdownString> {
+    const feature = match.groups?.feature;
+    const envs = Object.keys(config.environments);
+
+    if (config.baseUrl === "" && envs.length === 0) {
+      return new vscode.MarkdownString("Invalid Configuration!");
+    }
+
+    if (envs.length === 0) {
+      return new vscode.MarkdownString(`${config.baseUrl}${feature}`);
+    }
+
+    return envs.map((env) => {
+      const url = config.environments[env];
+      return new vscode.MarkdownString(`\`${env.toLocaleLowerCase()}\` - ${url}${feature}`);
+    });
   }
 
   function triggerUpdateDecorations(throttle: boolean = false) {
